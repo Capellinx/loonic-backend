@@ -23,6 +23,7 @@ export class CreateCandidateUseCase {
          experience: payload.education,
          phone: payload.phone,
          status: payload.status,
+         skills: payload.skills,
          createdAt: new Date(),
          updatedAt: new Date()
       })
