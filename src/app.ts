@@ -1,6 +1,9 @@
+import "express-async-errors"
 import express, { json } from "express";
 import helmet from "helmet";
 import cors from "cors"
+import { candidateRouter } from "./routes/candidate.routes";
+import { errorHandler } from "./middleware/handle-errors.middleware";
 
 const app = express()
 
@@ -11,5 +14,9 @@ app.use(cors({
    origin: "http://localhost:3000",
    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 }))
+
+app.use(candidateRouter)
+
+app.use(errorHandler.execute);
 
 export { app }
