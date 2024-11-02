@@ -120,4 +120,32 @@ export class CandidateRepositoryDB implements CandidateRepository {
       })
    }
 
+   async update(id: string, payload: CreateCandidateDTO): Promise<void> {
+      await prisma.candidate.update({
+         where: { id },
+         data: {
+            email: payload.email,
+            name: payload.name,
+            phone: payload.phone,
+            education: payload.education,
+            experience: payload.experience,
+            status: payload.status,
+            skills: {
+               updateMany: payload.skills.map(skill => ({
+                  where: {
+                     candidateId: id,
+                     name: skill.name.toLowerCase()
+                  },
+                  data: {
+                     name: skill.name.toLowerCase() 
+                  }
+               }))
+            }
+         }
+      });
+
+      return;
+   }
+
+
 }
