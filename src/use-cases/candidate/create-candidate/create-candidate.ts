@@ -1,8 +1,8 @@
 import { randomUUID } from "crypto";
 import { Candidate } from "../../../domain/entity/candidate";
 import { CandidateRepository } from "../../../domain/repositories/candidate-repository";
-import { CreateCandidateDTO } from "../create-candidate-dto";
 import { NotFoundError } from "../../../config/errors/application-errors";
+import { CreateCandidateDTO } from "./create-candidate-dto";
 
 export class CreateCandidateUseCase {
 
@@ -22,6 +22,7 @@ export class CreateCandidateUseCase {
          education: payload.education,
          experience: payload.education,
          phone: payload.phone,
+         status: payload.status,
          createdAt: new Date(),
          updatedAt: new Date()
       })

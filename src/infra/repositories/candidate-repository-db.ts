@@ -2,6 +2,7 @@ import { prisma } from "../../../prisma/db";
 import { Candidate } from "../../domain/entity/candidate";
 import { CandidateRepository } from "../../domain/repositories/candidate-repository";
 import { CreateCandidateDTO } from "../../use-cases/candidate/create-candidate/create-candidate-dto";
+import { GetAllCandidatesDTO } from "../../use-cases/candidate/get-all-candidates/get-all-candidates-dto";
 
 
 export class CandidateRepositoryDB implements CandidateRepository {
@@ -23,5 +24,8 @@ export class CandidateRepositoryDB implements CandidateRepository {
       })
 
       return
+   }
+   getAllCandidates({ name, skills, status }: GetAllCandidatesDTO): Promise<Candidate[]> {
+       throw new Error("Method not implemented.")
    }
 }

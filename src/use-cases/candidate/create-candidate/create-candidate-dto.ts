@@ -1,3 +1,4 @@
+import { Satatus } from "@prisma/client";
 import { z } from "zod";
 
 export const createCandidateSchema = z.object({
@@ -6,6 +7,7 @@ export const createCandidateSchema = z.object({
    phone: z.string(),
    education: z.string(),
    experience: z.string(),
+   status: z.nativeEnum(Satatus)
 })
 
 export type CreateCandidateDTO = z.infer<typeof createCandidateSchema>

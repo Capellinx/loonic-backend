@@ -1,6 +1,4 @@
-interface Skill {
-   name: string;
-}
+import { Satatus } from '../../../node_modules/.prisma/client/index.d';
 interface CandidateProps {
    id: string,
    name: string,
@@ -10,6 +8,7 @@ interface CandidateProps {
    education: string
    createdAt: Date
    updatedAt: Date
+   status: Satatus
 }
 
 export class Candidate {
@@ -21,6 +20,7 @@ export class Candidate {
    public education: string
    public createdAt: Date
    public updatedAt: Date
+   public status: Satatus
 
    constructor(props: CandidateProps) {
       this.id = props.id,
@@ -31,5 +31,6 @@ export class Candidate {
       this.education = props.education,
       this.createdAt = props.createdAt
       this.updatedAt = props.updatedAt
+      this.status = props.status
    }
 }

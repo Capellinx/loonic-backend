@@ -8,14 +8,15 @@ export class CraeteCandidateController {
    ){}
 
    async handle(request: Request, response: Response): Promise<Response> {
-      const { name, email, phone, education, experience } = request.body
+      const { name, email, phone, education, experience, status } = request.body
 
       await this.createCandidateUseCase.execute({
          name,
          email,
          phone,
          education,
-         experience
+         experience,
+         status
       })
 
       return response.status(201).send()
