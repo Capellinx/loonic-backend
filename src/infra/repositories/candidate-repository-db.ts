@@ -21,6 +21,26 @@ export class CandidateRepositoryDB implements CandidateRepository {
 
    }
 
+   async findById(id: string): Promise<Candidate | null> {
+      return await prisma.candidate.findUnique({
+         where: {
+            id
+         },
+         include: {
+            skills: true
+         }
+      })
+   }
+
+   async delete(id: string): Promise<void> {
+      console.log(id);
+      await prisma.candidate.delete({
+         where: {
+            id
+         }
+      })
+   }
+
    async create(payload: CreateCandidateDTO): Promise<void> {
       await prisma.candidate.create({
          data: {
@@ -36,7 +56,7 @@ export class CandidateRepositoryDB implements CandidateRepository {
    }
 
    async getAllCandidates({ name, skills, status, page = 1 }: GetAllCandidatesDTO): Promise<[Candidate[], number]> {
-      
+
       const candidates = prisma.candidate.findMany({
          where: {
             name: {
