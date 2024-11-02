@@ -9,6 +9,8 @@ interface CandidateProps {
    experience: string,
    education: string
    skills: Skill[]
+   createdAt: Date
+   updatedAt: Date
 }
 
 export class Candidate {
@@ -19,6 +21,8 @@ export class Candidate {
    public experience: string
    public education: string
    public skills: Skill[]
+   public createdAt: Date
+   public updatedAt: Date
 
    constructor(private props: CandidateProps) {
       this.id = props.id,
@@ -28,5 +32,7 @@ export class Candidate {
       this.experience = props.experience,
       this.education = props.education,
       this.skills = props.skills
+      this.createdAt = props.createdAt
+      this.updatedAt = props.updatedAt
    }
 }
