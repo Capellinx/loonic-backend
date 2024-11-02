@@ -10,12 +10,14 @@ import { getOneCandidateController } from "../use-cases/candidate/get-one-candid
 import { getOneCandidateSchema } from "../use-cases/candidate/get-one-candidate/get-one-candidate-dto";
 import { updateCandidateSchema } from "../use-cases/candidate/update-candidate/update-candidate-dto";
 import { updatteCandidateController } from "../use-cases/candidate/update-candidate";
+import { VerifyToken } from "../middleware/verify-token.middleware";
 
 
 export const candidateRouter = Router()
 
 candidateRouter.post(
    "/candidate",
+   VerifyToken.execute,
    ZodRequestValidate.execute({ body: createCandidateSchema }),
    async (request, response) => {
       await craeteCandidateController.handle(request, response)
@@ -32,6 +34,7 @@ candidateRouter.get(
 
 candidateRouter.delete(
    "/candidate/:id",
+   VerifyToken.execute,
    ZodRequestValidate.execute({ params: deleteCandidateSchema }),
    async (request, response) => {
       await deleteCandidateController.handle(request, response)
@@ -48,6 +51,7 @@ candidateRouter.get(
 
 candidateRouter.patch(
    "/candidate/:id",
+   VerifyToken.execute,
    ZodRequestValidate.execute({ body: updateCandidateSchema }),
    async (request, response) => {
       await updatteCandidateController.handle(request, response)
