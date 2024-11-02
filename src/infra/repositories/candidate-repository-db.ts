@@ -11,17 +11,27 @@ export class CandidateRepositoryDB implements CandidateRepository {
          where: {
             email,
          },
+         include: {
+            skills: true
+         }
       })
 
-      if (candidate) return candidate
+      if(!candidate) return null
 
-      return null
+      return candidate
+
    }
 
    async create(payload: CreateCandidateDTO): Promise<void> {
       await prisma.candidate.create({
-         data: payload
+         data: {
+            ...payload,
+            skills: {
+               create: payload.skills
+            }
+         }
       })
+
 
       return
    }
