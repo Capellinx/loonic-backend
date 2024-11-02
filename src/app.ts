@@ -4,6 +4,7 @@ import helmet from "helmet";
 import cors from "cors"
 import { candidateRouter } from "./routes/candidate.routes";
 import { errorHandler } from "./middleware/handle-errors.middleware";
+import { managerRouter } from "./routes/manager.route";
 
 const app = express()
 
@@ -15,7 +16,7 @@ app.use(cors({
    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 }))
 
-app.use(candidateRouter)
+app.use(candidateRouter, managerRouter)
 
 app.use(errorHandler.execute);
 
