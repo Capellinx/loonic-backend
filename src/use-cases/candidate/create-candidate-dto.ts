@@ -6,11 +6,6 @@ export const createCandidateSchema = z.object({
    phone: z.string(),
    education: z.string(),
    experience: z.string(),
-   skills: z.array(
-      z.object({
-         name: z.string()
-      })
-   )   
 })
 
 export type CreateCandidateDTO = z.infer<typeof createCandidateSchema>
