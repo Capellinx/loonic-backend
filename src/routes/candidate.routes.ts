@@ -4,13 +4,15 @@ import { ZodRequestValidate } from "../middleware/zod-errors.middleware";
 import { createCandidateSchema } from "../use-cases/candidate/create-candidate/create-candidate-dto";
 import { getAllCandidatesSchema } from '../use-cases/candidate/get-all-candidates/get-all-candidates-dto';
 import { getAllCandidatesController } from "../use-cases/candidate/get-all-candidates";
+import { deleteCandidateController } from "../use-cases/candidate/delete-candidate";
+import { deleteCandidateSchema } from "../use-cases/candidate/delete-candidate/delete-candidate-dto";
 
 
 export const candidateRouter = Router()
 
 candidateRouter.post(
    "/candidate",
-   ZodRequestValidate.execute({body: createCandidateSchema}),
+   ZodRequestValidate.execute({ body: createCandidateSchema }),
    async (request, response) => {
       await craeteCandidateController.handle(request, response)
    }
@@ -18,8 +20,16 @@ candidateRouter.post(
 
 candidateRouter.get(
    "/candidate",
-   ZodRequestValidate.execute({params: getAllCandidatesSchema}),
+   ZodRequestValidate.execute({ params: getAllCandidatesSchema }),
    async (request, response) => {
       await getAllCandidatesController.handle(request, response)
+   }
+)
+
+candidateRouter.delete(
+   "/candidate/:id",
+   ZodRequestValidate.execute({ params: deleteCandidateSchema }),
+   async (request, response) => {
+      await deleteCandidateController.handle(request, response)
    }
 )
