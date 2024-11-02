@@ -8,4 +8,5 @@ export interface CandidateRepository {
    delete(id: string): Promise<void>
    create(payload: CreateCandidateDTO): Promise<void>
    getAllCandidates({name, skills, status}: GetAllCandidatesDTO): Promise<[Candidate[], number]>
+   getOneCandidate(id: string): Promise<Candidate | null>
 }
