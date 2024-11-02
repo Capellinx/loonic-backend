@@ -29,8 +29,7 @@ model Candidate {
   education  String   @db.VarChar(250)
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
-  skills     Skill[]  @relation("CandidateSkills") // Relacionamento um-para-muitos
-
+  skills     Skill[]  @relation("CandidateSkills") 
   @@map("candidates")
 }
 
@@ -39,7 +38,7 @@ model Skill {
   name        String   @db.VarChar(250)
   
   candidateId String   @db.Uuid 
-  candidate   Candidate @relation("CandidateSkills", fields: [candidateId], references: [id]) 
+  candidate   Candidate @relation("CandidateSkills", fields: [candidateId], references: [id], onDelete: Cascade) 
 
   @@map("skills")
 }
