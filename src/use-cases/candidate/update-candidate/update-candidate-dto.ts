@@ -1,4 +1,4 @@
-import { Satatus } from "@prisma/client";
+import { Status } from "@prisma/client";
 import { z } from "zod";
 
 
@@ -9,7 +9,7 @@ export const updateCandidateSchema = z.object({
    phone: z.string().optional(),
    education: z.string().optional(),
    experience: z.string().optional(),
-   status: z.nativeEnum(Satatus).optional(),
+   status: z.nativeEnum(Status).optional(),
    skills: z.array(z.object({
       name: z.string()
    })).optional()

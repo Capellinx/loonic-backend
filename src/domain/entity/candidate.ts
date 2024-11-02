@@ -1,4 +1,4 @@
-import { Satatus } from '../../../node_modules/.prisma/client/index.d';
+import { Status } from "@prisma/client"
 
 interface Skill {
    name: string
@@ -12,7 +12,7 @@ interface CandidateProps {
    education: string
    createdAt: Date
    updatedAt: Date
-   status: Satatus
+   status: Status
    skills: Skill[]
 }
 
@@ -25,7 +25,7 @@ export class Candidate {
    public education: string
    public createdAt: Date
    public updatedAt: Date
-   public status: Satatus
+   public status: Status
    public skills: Skill[]
 
    constructor(props: CandidateProps) {

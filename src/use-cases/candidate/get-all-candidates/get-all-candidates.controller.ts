@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { GetAllCandidatesUseCase } from "./get-all-candidates";
-import { Satatus } from "@prisma/client";
 import { getAllCandidatesSchema } from "./get-all-candidates-dto";
 
 
