@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Satatus {
+enum Status {
   DISPONIVEL   @map("Disponivel")
   INDISPONIVEL @map("Indisponivel")
   EM_PROCESSO  @map("Em Processo")
@@ -25,7 +25,7 @@ model Candidate {
   email      String   @unique @db.VarChar(200)
   phone      String   @db.VarChar(20)
   experience String   @db.VarChar(250)
-  status     Satatus
+  status     Status
   education  String   @db.VarChar(250)
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
