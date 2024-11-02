@@ -4,7 +4,6 @@ import { CandidateRepository } from "../../domain/repositories/candidate-reposit
 import { CreateCandidateDTO } from "../../use-cases/candidate/create-candidate/create-candidate-dto";
 import { GetAllCandidatesDTO } from "../../use-cases/candidate/get-all-candidates/get-all-candidates-dto";
 
-
 export class CandidateRepositoryDB implements CandidateRepository {
    async findByEmail(email: string): Promise<Candidate | null> {
       const candidate = await prisma.candidate.findUnique({
@@ -16,7 +15,7 @@ export class CandidateRepositoryDB implements CandidateRepository {
          }
       })
 
-      if(!candidate) return null
+      if (!candidate) return null
 
       return candidate
 
@@ -35,7 +34,51 @@ export class CandidateRepositoryDB implements CandidateRepository {
 
       return
    }
-   getAllCandidates({ name, skills, status }: GetAllCandidatesDTO): Promise<Candidate[]> {
-       throw new Error("Method not implemented.")
+
+   async getAllCandidates({ name, skills, status, page = 1 }: GetAllCandidatesDTO): Promise<[Candidate[], number]> {
+      
+      const candidates = prisma.candidate.findMany({
+         where: {
+            name: {
+               contains: name
+            },
+            skills: {
+               some: {
+                  name: {
+                     in: skills
+                  }
+               }
+            },
+            status: {
+               in: status as any
+            }
+         },
+         include: {
+            skills: true
+         },
+         take: 10,
+         skip: (page - 1) * 10,
+      });
+
+      const quantity_results = prisma.candidate.count({
+         where: {
+            name: {
+               contains: name
+            },
+            skills: {
+               some: {
+                  name: {
+                     in: skills
+                  }
+               }
+            },
+            status: {
+               in: status as any
+            }
+         }
+      });
+
+      return await Promise.all([candidates, quantity_results]);
    }
+
 }
