@@ -1,4 +1,6 @@
-
+interface Skill {
+   name: string;
+}
 interface CandidateProps {
    id: string,
    name: string,
@@ -6,7 +8,7 @@ interface CandidateProps {
    phone: string,
    experience: string,
    education: string
-   skills: string[]
+   skills: Skill[]
 }
 
 export class Candidate {
@@ -16,7 +18,7 @@ export class Candidate {
    public phone: string
    public experience: string
    public education: string
-   public skills: string[]
+   public skills: Skill[]
 
    constructor(private props: CandidateProps) {
       this.id = props.id,
