@@ -27,7 +27,11 @@ export class CandidateRepositoryDB implements CandidateRepository {
             id
          },
          include: {
-            skills: true
+            skills: {
+               select: {
+                  name: true
+               }
+            }
          }
       })
    }
@@ -99,6 +103,21 @@ export class CandidateRepositoryDB implements CandidateRepository {
       });
 
       return await Promise.all([candidates, quantity_results]);
+   }
+
+   async getOneCandidate(id: string): Promise<Candidate | null> {
+      return await prisma.candidate.findUnique({
+         where: {
+            id
+         },
+         include: {
+            skills: {
+               select: {
+                  name: true
+               }
+            }
+         }
+      })
    }
 
 }
