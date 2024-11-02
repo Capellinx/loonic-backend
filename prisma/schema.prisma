@@ -25,20 +25,31 @@ model Candidate {
   email      String   @unique @db.VarChar(200)
   phone      String   @db.VarChar(20)
   experience String   @db.VarChar(250)
-  status     Satatus  
+  status     Satatus
   education  String   @db.VarChar(250)
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
-  skills     Skill[]  @relation("CandidateSkills") 
+  skills     Skill[]  @relation("CandidateSkills")
+
   @@map("candidates")
 }
 
 model Skill {
-  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name        String   @db.VarChar(250)
-  
-  candidateId String   @db.Uuid 
-  candidate   Candidate @relation("CandidateSkills", fields: [candidateId], references: [id], onDelete: Cascade) 
+  id   String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @db.VarChar(250)
+
+  candidateId String    @db.Uuid
+  candidate   Candidate @relation("CandidateSkills", fields: [candidateId], references: [id], onDelete: Cascade)
 
   @@map("skills")
+}
+
+model Manager {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email     String   @unique @db.VarChar(250)
+  pasword   String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("managers")
 }
