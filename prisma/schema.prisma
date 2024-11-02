@@ -18,7 +18,6 @@ model Candidate {
   name       String   @db.VarChar(250)
   email      String   @unique @db.VarChar(200)
   phone      String   @db.VarChar(20)
-  skills     String[] @db.VarChar(250)
   experience String   @db.VarChar(250)
   education  String   @db.VarChar(250)
   createdAt  DateTime @default(now()) @map("created_at")
