@@ -4,6 +4,8 @@ import { Candidate } from "../entity/candidate";
 
 export interface CandidateRepository {
    findByEmail(email: string): Promise<Candidate | null>
+   findById(id: string): Promise<Candidate | null>
+   delete(id: string): Promise<void>
    create(payload: CreateCandidateDTO): Promise<void>
    getAllCandidates({name, skills, status}: GetAllCandidatesDTO): Promise<[Candidate[], number]>
 }
