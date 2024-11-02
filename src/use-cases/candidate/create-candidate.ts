@@ -2,7 +2,7 @@ import { randomUUID } from "crypto";
 import { Candidate } from "../../domain/entity/candidate";
 import { CandidateRepository } from "../../domain/repositories/candidate-repository";
 import { CreateCandidateDTO } from "./create-candidate-dto";
-
+import { NotFoundError } from "../../config/errors/application-errors";
 
 export class CreateCandidateUseCase {
 
@@ -13,7 +13,7 @@ export class CreateCandidateUseCase {
    async execute(payload: CreateCandidateDTO): Promise<void> {
       const cadidate = await this.candidateRepository.findByEmail(payload.email)
 
-      if (cadidate) throw new Error("Esse candidato já está cadastrado.")
+      if (cadidate) throw new NotFoundError("Esse candidato já está cadastrado.")
 
       const newCandidate = new Candidate({
          id: randomUUID(),
