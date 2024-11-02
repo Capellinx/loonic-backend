@@ -1,4 +1,4 @@
-import { CreateCandidateDTO } from "../../use-cases/candidate/create-candidate-dto";
+import { CreateCandidateDTO } from "../../use-cases/candidate/create-candidate/create-candidate-dto";
 import { Candidate } from "../entity/candidate";
 
 export interface CandidateRepository {

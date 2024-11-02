@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { craeteCandidateController } from "../use-cases/candidate";
+import { craeteCandidateController } from "../use-cases/candidate/create-candidate";
 import { ZodRequestValidate } from "../middleware/zod-errors.middleware";
-import { createCandidateSchema } from "../use-cases/candidate/create-candidate-dto";
+import { createCandidateSchema } from "../use-cases/candidate/create-candidate/create-candidate-dto";
 
 
 export const candidateRouter = Router()

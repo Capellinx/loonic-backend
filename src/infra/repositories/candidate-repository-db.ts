@@ -1,7 +1,7 @@
 import { prisma } from "../../../prisma/db";
 import { Candidate } from "../../domain/entity/candidate";
 import { CandidateRepository } from "../../domain/repositories/candidate-repository";
-import { CreateCandidateDTO } from "../../use-cases/candidate/create-candidate-dto";
+import { CreateCandidateDTO } from "../../use-cases/candidate/create-candidate/create-candidate-dto";
 
 
 export class CandidateRepositoryDB implements CandidateRepository {
