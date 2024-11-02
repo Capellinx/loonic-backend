@@ -2,7 +2,7 @@ import Jwt from "jsonwebtoken";
 import { TokenService } from "../../domain/services/token.service";
 import { env } from "../../config/env";
 
-export class JsonWebToken implements TokenService {
+export class JsonWebTokenService implements TokenService {
    async generateToken(payload: Record<string, any>): Promise<string> {
       const accessToken = Jwt.sign(payload, env.JWT_SECRET, { expiresIn: '1d' })
       return accessToken
