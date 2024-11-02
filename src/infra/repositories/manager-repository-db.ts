@@ -5,7 +5,7 @@ import { RegisterManagerDTO } from "../../use-cases/manager/register-manager/reg
 
 
 export class ManagerRepositoryDB implements ManagerRepository {
-   async findByEmail(email: string): Promise<Omit<Manager, 'password'> | null> {
+   async findByEmail(email: string): Promise<Manager | null> {
       const manager = await prisma.manager.findUnique({
          where: {
             email
