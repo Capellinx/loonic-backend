@@ -8,6 +8,8 @@ import { deleteCandidateController } from "../use-cases/candidate/delete-candida
 import { deleteCandidateSchema } from "../use-cases/candidate/delete-candidate/delete-candidate-dto";
 import { getOneCandidateController } from "../use-cases/candidate/get-one-candidate";
 import { getOneCandidateSchema } from "../use-cases/candidate/get-one-candidate/get-one-candidate-dto";
+import { updateCandidateSchema } from "../use-cases/candidate/update-candidate/update-candidate-dto";
+import { updatteCandidateController } from "../use-cases/candidate/update-candidate";
 
 
 export const candidateRouter = Router()
@@ -41,5 +43,13 @@ candidateRouter.get(
    ZodRequestValidate.execute({ params: getOneCandidateSchema }),
    async (request, response) => {
       await getOneCandidateController.handle(request, response)
+   }
+)
+
+candidateRouter.patch(
+   "/candidate/:id",
+   ZodRequestValidate.execute({ body: updateCandidateSchema }),
+   async (request, response) => {
+      await updatteCandidateController.handle(request, response)
    }
 )
