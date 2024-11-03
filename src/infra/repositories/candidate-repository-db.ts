@@ -80,8 +80,8 @@ export class CandidateRepositoryDB implements CandidateRepository {
          include: {
             skills: true
          },
-         take: 10,
-         skip: (page - 1) * 10,
+         take: 5,
+         skip: (page - 1) * 5,
       });
 
       const quantity_results = prisma.candidate.count({
@@ -131,13 +131,12 @@ export class CandidateRepositoryDB implements CandidateRepository {
             experience: payload.experience,
             status: payload.status,
             skills: {
-               updateMany: payload.skills.map(skill => ({
+               updateMany: payload.skills.map((skill: { name: string }) => ({
                   where: {
-                     candidateId: id,
-                     name: skill.name.toLowerCase()
+                     name: skill.name.toLowerCase() 
                   },
                   data: {
-                     name: skill.name.toLowerCase() 
+                     name: skill.name.toLowerCase()
                   }
                }))
             }
