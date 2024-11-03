@@ -13,16 +13,19 @@ export class errorHandler {
       next: NextFunction
    ) {
       if (err instanceof ApplicationError) {
+         console.log(err);
          return response.status(err.statusCode).json({
             error: err.message,
          });
       }
 
       if (err instanceof PrismaClientKnownRequestError) {
+         console.log(err);
          return response.status(500).json({ error: "Database error" });
       }
 
       if (err instanceof ZodError) {
+         console.log(err);
          return response.status(400).json({ error: err.issues });
       }
 
