@@ -9,7 +9,7 @@ export class GetAllCandidatesController {
    ) { }
 
    async handle(request: Request, response: Response): Promise<Response> {
-      const { name, skills, status, page } = request.query
+      const { skills } = request.query
 
       const skillsArray = Array.isArray(skills) ? skills : (skills ? [skills] : undefined);
 
