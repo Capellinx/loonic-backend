@@ -1,4 +1,3 @@
-import { Status } from "@prisma/client";
 import { z } from "zod";
 
 
@@ -9,7 +8,7 @@ export const updateCandidateSchema = z.object({
    phone: z.string().optional(),
    education: z.string().optional(),
    experience: z.string().optional(),
-   status: z.nativeEnum(Status).optional(),
+   status: z.enum(["DISPONIVEL", "INDISPONIVEL", "EM_PROCESSO"]).optional(),
    skills: z.array(z.object({
       name: z.string()
    })).optional()
