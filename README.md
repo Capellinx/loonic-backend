@@ -68,14 +68,14 @@ Se você preferir rodar a aplicação localmente, execute:
 npm run dev
 ```
 ### 7. Acessando a Aplicação
-A aplicação estará disponível em http://localhost:(porta que voce definiu).
+A aplicação estará disponível em http://localhost:porta.
 
 
 ### Contato
 Se você tiver alguma dúvida ou sugestão, entre em contato comigo:
 
-Nome: Lucas Capella
-Email: seu-email@exemplo.com
-LinkedIn: seu-linkedin
+- Nome: Lucas Capella
+- Email: capellaaa7@gmail.com
+- LinkedIn: [Lucas Capella](https://www.linkedin.com/in/lucas-capella-dev/)
 
 
