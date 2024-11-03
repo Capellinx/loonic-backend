@@ -1,4 +1,4 @@
-# Projeto Loonic Backend
+**# Projeto Loonic Backend
 
 Este repositório contém a implementação do backend do projeto Loonic. A aplicação é construída com Node.js, TypeScript e Prisma, utilizando PostgreSQL como banco de dados.
 
@@ -67,7 +67,36 @@ Se você preferir rodar a aplicação localmente, execute:
 ```bash
 npm run dev
 ```
-### 7. Acessando a Aplicação
+
+### 8. Documentação da API com Swagger
+A documentação da API está disponível através do Swagger, que fornece uma interface interativa para visualizar e testar os endpoints da API.
+
+Acessando a Documentação
+Certifique-se de que o servidor está em execução: Para visualizar a documentação, você precisa ter a aplicação rodando. Você pode fazer isso localmente ou via Docker. Para mais informações sobre como iniciar a aplicação, consulte a seção Rodando o Projeto.
+
+Acesse a interface do Swagger: Após iniciar o servidor, abra seu navegador e acesse o seguinte endereço:
+```bash
+http://localhost:<porta>/api-docs
+````
+Substitua <porta> pela porta que você configurou na variável de ambiente PORT. O valor padrão da porta é 3000, portanto, a URL seria http://localhost:porta/api-docs.
+
+
+### 8. Estrutura da Documentação
+A documentação da API foi gerada com base nas anotações do Swagger em seus arquivos de código. A estrutura inclui informações como:
+
+Título e descrição da API: API credenciamento de candidatos - Uma API focada no credenciamento de candidatos para empresas.
+Versão: 1.0.0
+Endpoints: Todos os endpoints disponíveis com suas respectivas descrições, métodos, parâmetros e exemplos de resposta.
+
+Autenticação
+A API utiliza autenticação via JWT (JSON Web Token). Para testar endpoints que requerem autenticação, você deve fornecer um token de autenticação válido no cabeçalho Authorization no formato:
+
+```bash
+Bearer <seu-token>
+```
+
+
+### 9. Acessando a Aplicação
 A aplicação estará disponível em http://localhost:porta.
 
 
@@ -79,3 +108,4 @@ Se você tiver alguma dúvida ou sugestão, entre em contato comigo:
 - LinkedIn: [Lucas Capella](https://www.linkedin.com/in/lucas-capella-dev/)
 
 
+**
