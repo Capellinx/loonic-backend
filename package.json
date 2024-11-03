@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx watch src/server.ts",
-    "build": "tsc --outDir ./build",
-    "migrate": "prisma migrate deploy"
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/app.js",
+    "build": "tsc --outDir ./dist",
+    "migrate:deploy": "npx prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
