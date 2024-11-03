@@ -15,8 +15,7 @@ export class RegisterManagerUseCase {
 
    async execute({ email, password }: RegisterManagerDTO) {
       const manager = await this.managerRepository.findByEmail(email)
-
-      if (manager) throw new BadRequestError("Esse email ja existe.")
+      if (manager) throw new BadRequestError("Esse email já está cadastrado.")
 
       const newPassword = await this.encryptService.hashPassword(password)
 
