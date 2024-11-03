@@ -31,7 +31,6 @@ model Candidate {
   updatedAt  DateTime @updatedAt @map("updated_at")
   skills     Skill[]  @relation("CandidateSkills")
 
-  @@map("candidates")
 }
 
 model Skill {
@@ -41,7 +40,6 @@ model Skill {
   candidateId String    @db.Uuid
   candidate   Candidate @relation("CandidateSkills", fields: [candidateId], references: [id], onDelete: Cascade)
 
-  @@map("skills")
 }
 
 model Manager {
@@ -51,5 +49,4 @@ model Manager {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  @@map("managers")
 }
