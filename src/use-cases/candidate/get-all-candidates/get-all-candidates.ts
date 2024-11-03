@@ -1,4 +1,4 @@
-import { Candidate } from "@prisma/client";
+import { Status } from "@prisma/client";
 import { CandidateRepository } from "../../../domain/repositories/candidate-repository";
 import { GetAllCandidatesDTO } from "./get-all-candidates-dto";
 
@@ -8,7 +8,7 @@ export class GetAllCandidatesUseCase {
       private candidateRepository: CandidateRepository
    ) { }
 
-   async execute({ skills, status, name, page }: GetAllCandidates.Params): Promise<GetAllCandidates.Output | []> {
+   async execute({ skills, status, name, page = 1 }: GetAllCandidates.Params): Promise<GetAllCandidates.Output | []> {
       const [candidates, total] = await this.candidateRepository.getAllCandidates({
          skills,
          status,
@@ -23,13 +23,14 @@ export class GetAllCandidatesUseCase {
             id: candidate.id,
             name: candidate.name,
             email: candidate.email,
+            status: candidate.status,
             phone: candidate.phone,
             skills: candidate.skills.map(skill => skill.name),
             experience: candidate.experience,
             education: candidate.education
          })),
-         page: page as number,
-         total: Math.ceil(total / 10), 
+         page,
+         total: Math.ceil(total / 5), 
       };
    }
 }
@@ -41,6 +42,7 @@ export namespace GetAllCandidates {
          name: string,
          email: string,
          phone: string,
+         status: Status,
          skills: string[],
          experience: string,
          education: string
