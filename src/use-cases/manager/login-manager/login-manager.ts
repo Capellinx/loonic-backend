@@ -26,7 +26,6 @@ export class LoginManagerUseCase {
       return {
          access_token: token,
          manager: {
-            id: manager.id,
             email: manager.email
          }
       }
@@ -38,7 +37,6 @@ export namespace LoginManagerUseCase {
    export type Output = {
       access_token: string
       manager: {
-         id: string
          email: string
       }
    }
