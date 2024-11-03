@@ -1,5 +1,5 @@
-import { Candidate } from "@prisma/client";
 import { NotFoundError } from "../../../config/errors/application-errors";
+import { Candidate } from "../../../domain/entity/candidate";
 import { CandidateRepository } from "../../../domain/repositories/candidate-repository";
 
 export class GetOneCandidateUseCase {
