@@ -12,7 +12,7 @@ app.use(json())
 app.use(helmet())
 app.use(cors({
    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-   origin: "http://localhost:3000",
+   origin: "http://localhost:5173",
    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 }))
 
