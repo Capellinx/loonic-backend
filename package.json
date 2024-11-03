@@ -2,12 +2,11 @@
   "name": "back-end",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
-    "start": "node dist/app.js",
-    "build": "tsc --outDir ./dist",
+    "start": "node ./dist/src/server.js",
+    "build": "tsc",
     "migrate:deploy": "npx prisma migrate deploy"
   },
   "keywords": [],
