@@ -1,7 +1,9 @@
-import { Status } from "@prisma/client"
+import { Status } from "@prisma/client";
 
 interface Skill {
    name: string
+   id?: string;         
+   candidateId?: string; 
 }
 interface CandidateProps {
    id: string,
